@@ -45,47 +45,25 @@ screen.onkeypress(r_paddle.go_down, "Down")
 screen.onkeypress(l_paddle.go_up, "w")
 screen.onkeypress(l_paddle.go_down, "s")
 
+def quit():
+    global game_is_on
+    game_is_on = False
 
-def button_click(x, y):
-    if -150 < x < 150 and -100 < y < 0:
-        exit()
+screen.onkeypress(quit, "Escape")
 
-button = Turtle()
-button.color("white")
-button.speed(0)
-button.pensize(4)
-button.penup()
-button.hideturtle()
-
-button_text = Turtle()
-button_text.color("BLACK")
-button_text.speed(0)
-button_text.penup()
-button_text.hideturtle()
-
-button.begin_fill()
-
-for _ in range(2):
-    button.forward(300)
-    button.left(90)
-    button.forward(100)
-    button.left(90)
-
-button.end_fill()
-
-LARGE_FONT_SIZE = 30
-LARGE_FONT = ('Arial', LARGE_FONT_SIZE, 'normal')
-button_text.write("Exit", align='center', font=LARGE_FONT)
-
-screen.onscreenclick(button_click)
-
-
-
+exit_text = Turtle()
+exit_text.penup()
+exit_text.goto(-300, 258)
+exit_text.color("white")
+exit_text.speed(0)
+exit_text.write("ESC to Exit Game", align='center', font=("Courier", 11, "bold"))
+exit_text.hideturtle()
 
 art.clear_intro()
 
 game_is_on = True
 while game_is_on:
+
     time.sleep(ball.move_speed)
     screen.update()
     ball.move()
@@ -113,4 +91,4 @@ while game_is_on:
         scoreboard.r_point()
         ball.reset_position()
 
-screen.exitonclick()
+#screen.exitonclick()
